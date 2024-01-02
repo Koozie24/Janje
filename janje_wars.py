@@ -192,7 +192,7 @@ def change_day():
 #function to display screen 
 def printer():
     global day_count
-    print("Commands: buy, sell, next, quit. [commnand] [item_name] [quantity] or drink [drink] [quantity]")
+    print("Commands: buy, sell, next, quit. [command] [item_name] [quantity] or drink [drink] [quantity]")
     print(f'Items for Sale (Day {day_count}): ')
     print("------------------")
     for key, value in store_items.items():
@@ -225,7 +225,7 @@ def drink_rakija(drink):
                 janje_count += janje_winnings
                 clear_screen()
                 printer()
-                print("Ti pies pivo sa jaranje! You win janje!")
+                print("Ti pies pivo sa jarane! You win janje!")
                 print(f'You won {janje_winnings} janje!')
                 print(f'You now have {janje_count} janje')
             else:
