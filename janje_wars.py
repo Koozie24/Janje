@@ -96,14 +96,15 @@ def take_inputs(user_input):
         if(day_count == game_length):
             print("Today is the final day!")
         if(day_count > game_length):
-            save_game(player_cash)
-            score_check(player_cash)
+            clear_screen()
             print(f'Your ending number of marks is: {player_cash}!')
             if (player_cash < 200):
                 print("OOOF! Looks like you lost pare!")
             else:
                 profit = player_cash - 200
                 print(f'Congrats! You made {profit} in profit!')
+            save_game(player_cash)
+            score_check(player_cash)
             exit(1)
 
 #function to handle purchasing logic
