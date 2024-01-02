@@ -46,8 +46,10 @@ def save_game(player_cash):
     else:
         data = {}
 
+    #set save_name and player cash in data
     data[save_name] = player_cash
 
+    #write json data to file
     with open(os.path.join(PATH), 'w') as outfile:
         json.dump(data, outfile, indent=4)
 
