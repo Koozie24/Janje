@@ -37,14 +37,19 @@ def save_game(player_cash):
     print("Please input your name to save your score!")
     save_name = input()
 
-    this_game = {
-        save_name : player_cash
-    }
+    #check if json file exists and contains data
+    if os.path.exists(PATH) and os.path.getsize(PATH) > 0:
+        #open and load data to dict
+        with open(os.path.join(PATH), 'r') as infile:
+           data = json.load(infile)
+        
+    else:
+        data = {}
 
-    save_file = json.dumps(this_game, indent=4)
+    data[save_name] = player_cash
 
-    with open(os.path.join(PATH), "w") as outfile:
-        outfile.write(save_file)
+    with open(os.path.join(PATH), 'w') as outfile:
+        json.dump(data, outfile, indent=4)
 
 #loop through save_data.json to find the highest score and print
 def score_check(player_cash):
