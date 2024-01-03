@@ -33,7 +33,7 @@ day_count = 1
 print("Please input number of days the game should last: ")
 game_length = int(input())
 
-#gets a save name fromm user and appends ending player cash to save_data.json
+"""gets a save name fromm user and appends ending player cash to save_data.json"""
 def save_game(player_cash):
 
     print("Please input your name to save your score!")
@@ -55,7 +55,7 @@ def save_game(player_cash):
     with open(os.path.join(PATH), 'w') as outfile:
         json.dump(data, outfile, indent=4)
 
-#loop through save_data.json to find the highest score and print
+"""loop through save_data.json to find the highest score and print"""
 def score_check(player_cash):
     with open(os.path.join(PATH), 'r') as openfile:
         
@@ -72,11 +72,11 @@ def score_check(player_cash):
         else:
             print(f'Good attempt! You got {player_cash} marks! The high score is {high_score} marks!')
 
-#function to current clear screen 
+"""function to current clear screen"""
 def clear_screen():
     os.system('cls' if os.name == 'nt' else ' clear')
 
-#function parses user inputs and returns inputs
+"""function parses user inputs and returns inputs"""
 def take_inputs(user_input):
      
     if(user_input == 'quit'):
@@ -110,7 +110,7 @@ def take_inputs(user_input):
             exit(1)
         timed()
 
-#function to handle purchasing logic
+"""function to handle purchasing logic"""
 def buy_item(buy_input):
 
     if(len(buy_input) == 3):
@@ -148,7 +148,7 @@ def buy_item(buy_input):
         print("")
 
 
-#function to handle sale logic
+"""function to handle sale logic"""
 def sell_item(sale_input):
 
     if(len(sale_input) == 3):
@@ -182,7 +182,7 @@ def sell_item(sale_input):
         print("Not a valid sale input, try again.")
         print("")
 
-#function to change update day and items for sale 
+"""function to change update day and items for sale"""
 def change_day():
     global day_count
     global store_items
@@ -192,7 +192,7 @@ def change_day():
     clear_screen()
     printer()
 
-#function to display screen 
+"""function to display screen"""
 def printer():
     global day_count
     print("Commands: buy, sell, next, quit. [command] [item_name] [quantity] or drink [drink] [quantity]")
@@ -210,9 +210,9 @@ def printer():
     print("")
 
 
-#gambling function for drink [number] command
-#takes a bet of count input of rakija. picks a random number 0 - 99 if even, player wins. player will win a random num of janje from 2 to drink bet * 2
-#reverse if player loses. subtract janje count from 1 to drinks * 2
+"""gambling function for drink [number] command
+takes a bet of count input of rakija. picks a random number 0 - 99 if even, player wins. player will win a random num of janje from 2 to drink bet * 2
+reverse if player loses. subtract janje count from 1 to drinks * 2"""
 def drink_rakija(drink):
 
     if (len(drink) == 2):
@@ -243,7 +243,7 @@ def drink_rakija(drink):
     else:
         print("Not a valid input. To drink rakija: [drink][quantity]")
 
-#function calculates when 30 seconds elapse and advances the day
+"""function calculates when 30 seconds elapse and advances the day"""
 def timed():
 
     #get starting time 
