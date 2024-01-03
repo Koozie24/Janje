@@ -1,6 +1,9 @@
 import random
 import os
 import json
+import time 
+import math
+import threading
 
 PATH = r'c:\Users\13173\ProgrammingProjects\Janje\save_data.json'
 
@@ -106,6 +109,7 @@ def take_inputs(user_input):
             save_game(player_cash)
             score_check(player_cash)
             exit(1)
+        timed()
 
 #function to handle purchasing logic
 def buy_item(buy_input):
@@ -240,8 +244,29 @@ def drink_rakija(drink):
     else:
         print("Not a valid input. To drink rakija: [drink][quantity]")
 
+#function calculates when 30 seconds elapse and advances the day
+def timed():
 
+    #get starting time 
+    elapsed_time = 0
+    start_time = math.trunc(time.time())
+
+    while 1:
+        #get time now
+        current_time = math.trunc(time.time())
+        #calculate amount of time passing
+        elapsed_time = current_time - start_time
+
+        #check for 30 sec
+        if elapsed_time == 30:
+            break
+    
+    take_inputs('next')
+
+#display things initially
 printer()
+#start first timer
+timed()
 
 #create a loop
 while True:
