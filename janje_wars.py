@@ -3,7 +3,6 @@ import os
 import json
 import time 
 import math
-import threading
 
 PATH = r'c:\Users\13173\ProgrammingProjects\Janje\save_data.json'
 
