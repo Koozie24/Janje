@@ -95,6 +95,18 @@ def take_inputs(user_input):
         global game_length
         day_count += 1
         change_day()
+
+        #int to pass to pass to event function to see if an event happens
+        day_change_event = random.randint(0, 99)
+
+        if(check_if_change_event_occurs(day_change_event) == True):
+            #pick a random event of some arbitrary size
+            pick_event = random.randint(0, 99)
+
+            
+
+
+        #check day count for final day and end of game
         if(day_count == game_length):
             print("Today is the final day!")
         if(day_count > game_length):
@@ -108,7 +120,15 @@ def take_inputs(user_input):
             save_game(player_cash)
             score_check(player_cash)
             exit(1)
+
         timed()
+
+"""checking random integer 0 - 99 to determine if an event happens on a day change. ~40% chance an event will occur"""
+def check_if_change_event_occurs(change_int):
+    if(change_int >= 59):
+        return True
+    else:
+        return False
 
 """function to handle purchasing logic"""
 def buy_item(buy_input):
@@ -147,7 +167,6 @@ def buy_item(buy_input):
         print("Not a valid buy input, try again. [buy][item][quantity]")
         print("")
 
-
 """function to handle sale logic"""
 def sell_item(sale_input):
 
@@ -182,7 +201,7 @@ def sell_item(sale_input):
         print("Not a valid sale input, try again.")
         print("")
 
-"""function to change update day and items for sale"""
+"""function to change price of items for sale and update screen"""
 def change_day():
     global day_count
     global store_items
@@ -208,7 +227,6 @@ def printer():
     print("")
     print(f'You currently have ${player_cash} marks')
     print("")
-
 
 """gambling function for drink [number] command
 takes a bet of count input of rakija. picks a random number 0 - 99 if even, player wins. player will win a random num of janje from 2 to drink bet * 2
